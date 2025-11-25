@@ -53,4 +53,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: viditpawar/azure-devops-python-cicd:latest
+          tags: viditpawar25/azure-devops-python-cicd:latest
