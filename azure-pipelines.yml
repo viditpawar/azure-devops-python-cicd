@@ -13,7 +13,6 @@ pool:
 
 variables:
   pythonVersion: '3.11'
-  # Change this: your Docker Hub repo name
   imageRepository: 'viditpawar/azure-devops-python-cicd'
   dockerRegistryServiceConnection: 'dockerhub-connection'
   tag: '$(Build.BuildId)'
@@ -25,7 +24,8 @@ stages:
       - job: Build
         displayName: "Run tests and lint"
         steps:
-          - task: Checkout@1
+
+          - checkout: self
             displayName: "Checkout code"
 
           - task: UsePythonVersion@0
@@ -57,12 +57,13 @@ stages:
   - stage: BuildAndPushImage
     displayName: "Build & Push Docker image"
     dependsOn: BuildAndTest
-    condition: succeeded()   # only run if tests passed
+    condition: succeeded()
     jobs:
       - job: DockerBuild
         displayName: "Build and push image"
         steps:
-          - task: Checkout@1
+
+          - checkout: self
             displayName: "Checkout code"
 
           - task: Docker@2
