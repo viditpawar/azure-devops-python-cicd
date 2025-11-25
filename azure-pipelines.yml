@@ -14,7 +14,7 @@ pool:
 variables:
   pythonVersion: '3.11'
   # Change this: your Docker Hub repo name
-  imageRepository: '<your-dockerhub-username>/azure-devops-python-cicd'
+  imageRepository: 'viditpawar/azure-devops-python-cicd'
   dockerRegistryServiceConnection: 'dockerhub-connection'
   tag: '$(Build.BuildId)'
 
